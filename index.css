@@ -1,0 +1,130 @@
+html,
+body {
+    height: 99%;
+    background: #111;
+}
+
+.center-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scene {
+    width: 100%;
+    height: 100%;
+    perspective: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cube {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: rotation 10s infinite alternate;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+    100% {
+        transform: rotateY(720deg) rotateX(60deg);
+    }
+}
+
+.cube__face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+}
+
+.circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #000;
+    margin: 20px;
+}
+
+.cube__face--left {
+    background-color: #fff;
+    border: 2px solid rgba(150, 150, 150, 0.575);
+    transform: translateX(-100px) rotateY(90deg);
+}
+
+.cube__face--right {
+    background-color: #fff;
+    border: 2px solid rgba(150, 150, 150, 0.575);
+    transform: translateX(100px) rotateY(90deg);
+}
+
+.-two {
+    margin: 30px;
+}
+
+.cube__face--bottom {
+    background-color: #fff;
+    border: 2px solid rgba(150, 150, 150, 0.575);
+    transform: translateY(100px) rotateX(90deg);
+}
+
+.cube__face--bottom>.in-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.cube__face--top {
+    background-color: #fff;
+    border: 2px solid rgba(150, 150, 150, 0.575);
+    transform: translateY(-100px) rotateX(90deg);
+}
+
+.cube__face--top>.in-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cube__face--back {
+    background-color: #fff;
+    border: 2px solid rgba(150, 150, 150, 0.575);
+    transform: translateZ(-100px);
+}
+
+.cube__face--back>.in-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cube__face--front {
+    background-color: #fff;
+    border: 2px solid rgba(150, 150, 150, 0.575);
+    transform: translateZ(100px);
+}
+
+.cube__face--front>.in-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media screen and (max-height: 376px) {
+    html {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    body {
+        height: unset;
+    }
+    .cube {
+        display: none;
+    }
+    .scene:before {
+        content: "Unable to render object";
+        color: white;
+    }
+}
